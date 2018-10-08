@@ -14,6 +14,6 @@
 	},
 	"devDependencies": {
 		"copy-webpack-plugin": "^4.5.2",
-		"@appnest/web-config": "0.0.32"
+		"@appnest/web-config": "0.0.34"
 	}
 }

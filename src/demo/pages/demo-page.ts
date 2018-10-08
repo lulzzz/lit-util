@@ -1,6 +1,6 @@
 import { eventOptions, html, LitElement, property } from "@polymer/lit-element";
 import { TemplateResult } from "lit-html";
-import { addStringsToCache, customElement, getStrings, setStrings, testDec, translate } from "../../lib";
+import { addStringsToCache, customElement, getStrings, onTranslate, setStrings, testDec, translate } from "../../lib";
 
 const styles = require("./demo-page.scss").toString();
 
@@ -21,6 +21,10 @@ async function setLanguage (language: string) {
  */
 @customElement()
 export class DemoPageComponent extends LitElement {
+
+	@onTranslate() test () {
+		alert("HEY");
+	}
 
 	@testDec() helloWorld = "1234";
 	@property() lang = "en";

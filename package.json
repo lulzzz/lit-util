@@ -6,7 +6,8 @@
 		"b:prod": "webpack --mode=production --optimize-minimize ",
 		"s": "node_modules/.bin/webpack-dev-server --open --hot --inline --config webpack.config.js --mode=development",
 		"start": "npm run s",
-		"ncu": "ncu -u -a && npm update && npm install"
+		"ncu": "ncu -u -a && npm update && npm install",
+		"test": "karma start"
 	},
 	"dependencies": {
 		"@polymer/lit-element": "^0.6.2",
@@ -14,6 +15,19 @@
 	},
 	"devDependencies": {
 		"copy-webpack-plugin": "^4.5.2",
-		"@appnest/web-config": "0.0.34"
+		"@appnest/web-config": "0.0.35",
+		"@types/chai": "^4.1.6",
+		"@types/mocha": "^5.2.5",
+		"chai": "^4.2.0",
+		"chromedriver": "^2.42.0",
+		"karma": "^3.0.0",
+		"karma-babel-preprocessor": "^7.0.0",
+		"karma-chai": "^0.1.0",
+		"karma-chrome-launcher": "^2.2.0",
+		"karma-firefox-launcher": "^1.1.0",
+		"karma-mocha": "^1.3.0",
+		"karma-safari-launcher": "^1.0.0",
+		"karma-webpack": "^3.0.5",
+		"mocha": "^5.2.0"
 	}
 }

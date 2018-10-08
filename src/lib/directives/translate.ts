@@ -49,38 +49,3 @@ export const translate =
 
 			handleTranslation(part, key, values);
 		});
-
-// export const translatable = () =>
-// 	(clazz: Constructor<HTMLElement>) => {
-// 		window.addEventListener(TranslateEvent.LANGUAGE_CHANGED, function cb (e) {
-//
-// 			// Check whether the element is still connected / has been removed from the DOM.
-// 			// If the element has been disconnected from the DOM, remove the event listener.
-// 			if (!clazz.isConnected) {
-// 				e.currentTarget.removeEventListener(event.type, cb);
-// 				return;
-// 			}
-//
-// 			//clazz.requestUpdate().then();
-//
-// 		}, {passive: true});
-// 		return clazz as any;
-// 	};
-
-
-// export const onTranslate = () =>
-// 	(proto: any, propName: string) => {
-// 		window.addEventListener(TranslateEvent.LANGUAGE_CHANGED, function cb (e) {
-//
-// 			// Check whether the element is still connected / has been removed from the DOM.
-// 			// If the element has been disconnected from the DOM, remove the event listener.
-// 			// console.log(proto);
-// 			// if (!proto.isConnected) {
-// 			// 	e.currentTarget.removeEventListener(event.type, cb);
-// 			// 	return;
-// 			// }
-//
-// 			//proto[name](e);
-//
-// 		}, {passive: true});
-// 	};

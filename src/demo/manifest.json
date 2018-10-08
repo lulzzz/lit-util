@@ -1,0 +1,13 @@
+{
+  "name": "Template",
+  "short_name": "Template",
+  "description": "Description",
+  "icons": [
+  ],
+  "theme_color": "#000000",
+  "background_color": "#FFFFFF",
+  "display": "minimal-ui",
+  "start_url": "https://example.com",
+  "orientation": "portrait-primary",
+  "lang": "en"
+}

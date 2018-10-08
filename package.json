@@ -1,0 +1,19 @@
+{
+	"name": "@appnest/let-util",
+	"version": "0.0.1",
+	"scripts": {
+		"b:dev": "webpack --mode=development",
+		"b:prod": "webpack --mode=production --optimize-minimize ",
+		"s": "node_modules/.bin/webpack-dev-server --open --hot --inline --config webpack.config.js --mode=development",
+		"start": "npm run s",
+		"ncu": "ncu -u -a && npm update && npm install"
+	},
+	"dependencies": {
+		"@polymer/lit-element": "^0.6.2",
+		"lit-html": "^0.12.0"
+	},
+	"devDependencies": {
+		"copy-webpack-plugin": "^4.5.2",
+		"@appnest/web-config": "0.0.32"
+	}
+}

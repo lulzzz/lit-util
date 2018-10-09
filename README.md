@@ -4,7 +4,7 @@
 
 This project is a collection of the functions I often find myself using in many of my projects.
 
-## 🎉 Step 1 - Install the dependency
+## 🎉 Install the dependency
 
 ```javascript
 npm i @appnest/lit-util
@@ -67,7 +67,7 @@ get("cta.awesome", { thing: get("cta.cats") )); // Cats are awesome!
 
 ### Step 6 - Use the `translate` directive
 
-If you are using `lit-html` you might want to use the directive `translate`. This directive makes sure to automatically update all of the translated parts when the method `setStrings` is called.
+If you are using `lit-html` you might want to use the `translate` directive. This directive makes sure to automatically update all of the translated parts when the method `setStrings` is called and the `stringsChanged` event is dispatched on the window object.
 
 ```javascript
 class MyComponent extends LitElement {

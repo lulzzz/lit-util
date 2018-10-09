@@ -68,6 +68,19 @@ export function setStrings (newStrings: Strings) {
 }
 
 /**
+ * Interpolates the values into the string.
+ * @param text
+ * @param values
+ */
+export function interpolateValues (text: string, values: Values): string {
+	for (const [key, value] of Object.entries(values)) {
+		text = text.replace(new RegExp(`{{[  ]*${key}[  ]*}}`), value);
+	}
+
+	return text;
+}
+
+/**
  * Translates a key with optional values.
  * Uses the current strings and string cache to fetch the string.
  * @param key (eg. "common.get_started")
@@ -87,12 +100,12 @@ export function get (key: string,
 	// Split the key in parts (example: hello.world)
 	const parts = key.split(".");
 
-	// Find the translation by traversing through the strings
+	// Find the translation by traversing through the strings matching the chain of keys
 	let translation: string | object = currentStrings || {};
 	while (parts.length > 0) {
 		translation = translation[parts.shift()];
 
-		// Do not continue if the key or translation is not defined
+		// Do not continue if the translation is not defined
 		if (translation == null) return emptyPlaceholder(key);
 	}
 
@@ -101,11 +114,7 @@ export function get (key: string,
 
 	// Replace the placeholders
 	if (values != null) {
-		for (const key in values) {
-			if (values.hasOwnProperty(key)) {
-				translation = translation.replace(new RegExp(`{{[  ]*${key}[  ]*}}`), values[key]);
-			}
-		}
+		translation = interpolateValues(translation, values);
 	}
 
 	translationCache[key] = {values, translation};

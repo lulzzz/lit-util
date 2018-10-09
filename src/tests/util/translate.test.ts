@@ -1,40 +1,17 @@
 const expect = chai.expect;
 
 import { addStringsToCache, get, getStringsFromCache, removeStringsFromCache, setStrings } from "../../lib/util/translate";
+import { daStrings, enStrings } from "../mock";
 
-const enStrings = {
-	"lang": "en",
-	"header": {
-		"title": "Hello",
-		"subtitle": "World"
-	},
-	"cta": {
-		"awesome": "{{ things }} are awesome!"
-	}
-};
-
-const daStrings = {
-	"lang": "da",
-	"header": {
-		"title": "Hej",
-		"subtitle": "Verden"
-	},
-	"cta": {
-		"awesome": "{{ things }} er for nice!"
-	}
-};
-
-describe("translate", () => {
-	before(() => {
+describe("util/translate", () => {
+	beforeEach(() => {
+		addStringsToCache("en", enStrings);
+		addStringsToCache("da", daStrings);
+		setStrings(getStringsFromCache("en"));
 	});
 	after(() => {
 		removeStringsFromCache("en");
 		removeStringsFromCache("da");
-	});
-	beforeEach( () => {
-		addStringsToCache("en", enStrings);
-		addStringsToCache("da", daStrings);
-		setStrings(getStringsFromCache("en"));
 	});
 
 	it("[get] - should translate keys based on the current language", () => {
@@ -57,9 +34,9 @@ describe("translate", () => {
 	});
 
 	it("[get] - should interpolate values correctly", () => {
-		expect(get("cta.awesome", { things: "Cats" })).to.equal("Cats are awesome!");
+		expect(get("cta.awesome", {things: get("cta.cats")})).to.equal("Cats are awesome!");
 
 		setStrings(getStringsFromCache("da"));
-		expect(get("cta.awesome", { things: "Katte" })).to.equal("Katte er for nice!");
+		expect(get("cta.awesome", {things: get("cta.cats")})).to.equal("Katte er for nice!");
 	});
 });

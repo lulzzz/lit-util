@@ -1,4 +1,4 @@
-import { copyArray } from "./helpers";
+import { copyArray } from "./helper";
 
 /**
  * Returns a random number in a range (inclusive).

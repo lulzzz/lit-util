@@ -30,3 +30,11 @@ export function clamp (value, min, max) {
 export function copyArray (arr) {
 	return [...arr];
 }
+
+/**
+ * Waits a specifies amount of time.
+ * @param ms
+ */
+export function wait (ms) {
+	return new Promise(res => setTimeout(res, ms));
+}

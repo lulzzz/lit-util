@@ -1,4 +1,4 @@
-export * from "./decorators";
+export * from "./decorator";
 export * from "./util";
-export * from "./directives";
+export * from "./directive";
 

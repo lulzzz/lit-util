@@ -3,7 +3,7 @@ export type Strings = {[key: string]: string | Strings};
 export type CachedTranslation = {values: Values, translation: string};
 
 export enum TranslateEvent {
-	LANGUAGE_CHANGED = "languageChanged"
+	STRINGS_CHANGED = "stringsChanged"
 }
 
 const stringsCache = new Map<string, Strings>();
@@ -64,7 +64,7 @@ export function getStringsFromCache (path: string) {
 export function setStrings (newStrings: Strings) {
 	translationCache = {};
 	currentStrings = newStrings;
-	window.dispatchEvent(new CustomEvent(TranslateEvent.LANGUAGE_CHANGED, {detail: currentStrings}));
+	window.dispatchEvent(new CustomEvent(TranslateEvent.STRINGS_CHANGED, {detail: currentStrings}));
 }
 
 /**

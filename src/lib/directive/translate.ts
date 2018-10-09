@@ -7,7 +7,7 @@ import { get, TranslateEvent, Values } from "../util/translate";
 const partCaches = new Map<NodePart, {key: string, values?: Values, listen: boolean}>();
 
 // Listens for changes in the language and updates all of the cached parts if necessary
-window.addEventListener(TranslateEvent.LANGUAGE_CHANGED, () => {
+window.addEventListener(TranslateEvent.STRINGS_CHANGED, () => {
 	for (const [part, {key, values, listen}] of partCaches.entries()) {
 		if (listen && isPartConnected(part)) {
 			handleTranslation(part, key, values);

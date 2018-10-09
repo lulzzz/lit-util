@@ -18,7 +18,7 @@ async function setLanguage (language: string) {
 /**
  * Demo page.
  */
-@customElement()
+@customElement("demo-page-component")
 export class DemoPageComponent extends LitElement {
 
 	@testDec() helloWorld = "1234";

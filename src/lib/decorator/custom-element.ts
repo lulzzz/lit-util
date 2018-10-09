@@ -1,12 +1,11 @@
 import { Constructor } from "@polymer/lit-element";
-import { camelToDash } from "..";
 
 /**
- * Defines a custom element using the dash-cased name of the class or a custom tag name.
+ * Defines a custom element.
  * @param tagName
  */
-export const customElement = (tagName?: string) =>
+export const customElement = (tagName: string) =>
 	(clazz: Constructor<HTMLElement>) => {
-		window.customElements.define(tagName || camelToDash(clazz.name), clazz);
+		window.customElements.define(tagName, clazz);
 		return clazz as any;
 	};

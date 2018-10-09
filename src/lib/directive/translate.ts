@@ -4,17 +4,23 @@ import { get, TranslateEvent, Values } from "../util/translate";
 
 // Caches the parts and the translations.
 // In the ideal world this would be a weakmap, but it is not possible to loop over weakmaps.
-const partCaches = new Map<NodePart, {key: string, values?: Values, listen: boolean}>();
+const partCache = new Map<NodePart, {key: string, values?: Values, listen: boolean}>();
 
-// Listens for changes in the language and updates all of the cached parts if necessary
-window.addEventListener(TranslateEvent.STRINGS_CHANGED, () => {
-	for (const [part, {key, values, listen}] of partCaches.entries()) {
-		if (listen && isPartConnected(part)) {
-			handleTranslation(part, key, values);
-			part.commit();
+/**
+ * Listens for changes in the language and updates all of the cached parts if necessary
+ */
+function attachTranslateListener () {
+	window.addEventListener(TranslateEvent.STRINGS_CHANGED, () => {
+		for (const [part, {key, values, listen}] of partCache.entries()) {
+			if (listen && isPartConnected(part)) {
+				handleTranslation(part, key, values);
+				part.commit();
+			}
 		}
-	}
-});
+	});
+}
+
+attachTranslateListener();
 
 /**
  * Handles the translation.
@@ -44,6 +50,6 @@ function handleTranslation (part: NodePart, key: string, values?: Values) {
 export const translate =
 	(key: string, values?: Values, listen = true): Directive<NodePart> =>
 		directive((part: NodePart) => {
-			partCaches.set(part, {key, values, listen});
+			partCache.set(part, {key, values, listen});
 			handleTranslation(part, key, values);
 		});

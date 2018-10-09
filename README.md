@@ -49,7 +49,7 @@ await setStrings(strings);
 
 ### Step 4 - Get the translated strings
 
-To get a translated string use the function `get`. Give this function a string with the chain of keys that points to your object. The below example is based on the strings defined in `step 1`.
+To get a translated string use the function `get`. Give this function a string with the chain of keys that points to the desired string in the JSON structure. The below example is based on the strings defined in `step 1`.
 
 ```javascript
 get("lang"); // "en"
@@ -59,13 +59,13 @@ get("header.subtitle"); // "World"
 
 ### Step 5 - Interpolate values
 
-It is possible to interpolate values in your strings using the `{{ name }}` syntax in the strings and then providing an object with values replacing those defined in the strings to the `get` function. The below example is based on the strings defined in `step 1`.
+Using the `get` function it is possible to interpolate values. Simply use the `{{ key }}` syntax in your strings and provide an object with values replacing those defined in the string when using the `get` function. The below example is based on the strings defined in `step 1`.
 
 ```javascript
 get("cta.awesome", { thing: get("cta.cats") )); // Cats are awesome!
 ```
 
-### Step 6 - Add the translated strings to your application
+### Step 6 - Use the `translate` directive
 
 If you are using `lit-html` you might want to use the directive `translate`. This directive makes sure to automatically update all of the translated parts when the method `setStrings` is called.
 
@@ -83,7 +83,7 @@ class MyComponent extends LitElement {
 
 ## 🦀 Use `@customElement()` to define your custom elements.
 
-Use the decorator `customElement` to define your custom elements. Simply give it a tag-name and your custom element will be defined.
+Use the `customElement` decorator to define your custom elements. Simply give it a tag-name and your custom element will be defined.
 
 ```javascript
 @customElement("hello-component")

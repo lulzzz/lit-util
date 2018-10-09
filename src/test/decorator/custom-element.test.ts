@@ -1,6 +1,5 @@
-import { html, LitElement, property } from "@polymer/lit-element";
-import { addStringsToCache, customElement, get, getStringsFromCache, removeChildren, removeStringsFromCache, setStrings, translate } from "../../lib";
-import { daStrings, enStrings } from "../mock";
+import { html, LitElement } from "@polymer/lit-element";
+import { customElement } from "../../lib";
 
 const expect = chai.expect;
 
@@ -12,28 +11,15 @@ function isRegistered (elementName: string) {
 	return document.createElement(elementName).constructor !== HTMLElement;
 }
 
-@customElement()
+@customElement("test-component")
 class TestComponent extends LitElement {
 	render () {
 		return html``;
 	}
 }
 
-@customElement("this-is-a-custom-name")
-class TestComponentTwo extends LitElement {
-	render () {
-		return html``;
-	}
-}
-
-@customElement()
-class TestCOmPoNenT extends HTMLElement {
-}
-
 const componentNames = [
-	"test-component",
-	"this-is-a-custom-name",
-	"test-c-om-po-nen-t"
+	"test-component"
 ];
 
 describe("decorator/custom-element", () => {
@@ -41,7 +27,7 @@ describe("decorator/custom-element", () => {
 		await Promise.all(componentNames.map(name => customElements.whenDefined(name)));
 	});
 
-	it("[@customElement] - should register components with the correct names",  () => {
+	it("[@customElement] - should register components with the correct names", () => {
 		for (const name of componentNames) {
 			isRegistered(name);
 		}

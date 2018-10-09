@@ -4,7 +4,7 @@ import { daStrings, enStrings } from "../mock";
 
 const expect = chai.expect;
 
-@customElement()
+@customElement("my-component")
 class MyComponent extends LitElement {
 
 	@property() things = "";

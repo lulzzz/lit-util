@@ -2,10 +2,7 @@
 	"extends": "./node_modules/@appnest/web-config/tsconfig.json",
 	"compilerOptions": {
 		"outDir": "dist",
-		"declaration": true,
-		"module": "commonjs",
-		"target": "es5",
-		"downlevelIteration": true
+		"declaration": true
 	},
 	"include": [
 		"src/lib/**/*"

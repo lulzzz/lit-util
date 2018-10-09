@@ -3,6 +3,7 @@ import { isPartConnected } from ".";
 import { get, TranslateEvent, Values } from "../util/translate";
 
 // Caches the parts and the translations.
+// In the ideal world this would be a weakmap, but it is not possible to loop over weakmaps.
 const partCaches = new Map<NodePart, {key: string, values?: Values, listen: boolean}>();
 
 // Listens for changes in the language and updates all of the cached parts if necessary

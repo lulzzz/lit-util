@@ -1,9 +1,19 @@
 import { Directive, directive, NodePart } from "lit-html";
-import { addEventForNodePart } from ".";
+import { isPartConnected } from ".";
 import { get, TranslateEvent, Values } from "../util/translate";
 
 // Caches the parts and the translations.
-const partCaches = new WeakMap<NodePart, true>();
+const partCaches = new Map<NodePart, {key: string, values?: Values, listen: boolean}>();
+
+// Listens for changes in the language and updates all of the cached parts if necessary
+window.addEventListener(TranslateEvent.LANGUAGE_CHANGED, () => {
+	for (const [part, {key, values, listen}] of partCaches) {
+		if (listen && isPartConnected(part)) {
+			handleTranslation(part, key, values);
+			part.commit();
+		}
+	}
+});
 
 /**
  * Handles the translation.
@@ -21,7 +31,6 @@ function handleTranslation (part: NodePart, key: string, values?: Values) {
 
 	// Set the value of the new translation
 	part.setValue(translation);
-	partCaches.set(part, true);
 }
 
 
@@ -34,18 +43,6 @@ function handleTranslation (part: NodePart, key: string, values?: Values) {
 export const translate =
 	(key: string, values?: Values, listen = true): Directive<NodePart> =>
 		directive((part: NodePart) => {
-
-			// Hook up an event listener for when the language changes
-			if (listen && !partCaches.has(part)) {
-				addEventForNodePart(TranslateEvent.LANGUAGE_CHANGED, window, part, () => {
-					handleTranslation(part, key, values);
-					part.commit();
-
-				}, () => {
-					partCaches.delete(part);
-
-				}, {passive: true});
-			}
-
+			partCaches.set(part, {key, values, listen});
 			handleTranslation(part, key, values);
 		});

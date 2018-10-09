@@ -44,10 +44,10 @@ module.exports = function (config) {
 			"karma-safari-launcher"
 		],
 		files: [
-			"src/test.js"
+			"src/test/test.js"
 		],
 		preprocessors: {
-			"src/test.js": ["webpack"]
+			"src/test/test.js": ["webpack"]
 		},
 		reporters: ["progress"],
 		port: 9876,

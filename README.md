@@ -2,7 +2,8 @@
 
 ## 🤔 What is this?
 
-This project is a collection of the functions I often find myself using in many of my projects.
+This project is a collection of functions I tend to use when building a project based on lit-html. The goal is to give you some inspiration and make your life a little easier when finding yourself in need of the same functionality.
+
 
 ## 🎉 Install the dependency
 

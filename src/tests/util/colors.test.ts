@@ -1,4 +1,4 @@
-import { hexToRGB, isHex } from "./colors";
+import { contrastColor, hexToRGB, isHex } from "../../lib/util/colors";
 
 const expect = chai.expect;
 
@@ -15,23 +15,28 @@ const validColors = [
 	},
 	{
 		hex: "#8d6e63",
-		rgb: {r: 141, g: 110, b: 99}
+		rgb: {r: 141, g: 110, b: 99},
+		contrast: "#FFFFFF"
 	},
 	{
 		hex: "#26a69a",
-		rgb: {r: 38, g: 166, b: 154}
+		rgb: {r: 38, g: 166, b: 154},
+		contrast: "#FFFFFF"
 	},
 	{
 		hex: "#ff7676",
-		rgb: {r: 255, g: 118, b: 118}
+		rgb: {r: 255, g: 118, b: 118},
+		contrast: "#000000"
 	},
 	{
 		hex: "#29b6f6",
-		rgb: {r: 41, g: 182, b: 246}
+		rgb: {r: 41, g: 182, b: 246},
+		contrast: "#000000"
 	},
 	{
 		hex: "#f54ea280",
-		rgb: {r: 245, g: 78, b: 162, a: 0.5}
+		rgb: {r: 245, g: 78, b: 162, a: 0.5},
+		contrast: "#FFFFFF"
 	}
 ];
 
@@ -62,6 +67,13 @@ describe("colors", () => {
 	it("[isHex] - should invalidate all invalid hex correctly",  () => {
 		for (const hex of invalidHex) {
 			expect(isHex(hex)).to.equal(false);
+		}
+	});
+
+	it("[contrastColor] - should find the correct contrast to the color",  () => {
+		for (const color of validColors) {
+			expect(contrastColor(color.hex)).to.equal(color.contrast);
+			expect(contrastColor(color.rgb)).to.equal(color.contrast);
 		}
 	});
 });

@@ -22,7 +22,7 @@ export async function getStrings (path: string): Promise<Strings> {
 	}
 
 	// Fetch the strings and default to an empty object to avoid issues if the file does not exist.
-	const strings = await fetch(path).then(async (res) => {
+	return await fetch(path).then(async (res) => {
 		try {
 			return await res.json();
 		} catch (e) {
@@ -30,8 +30,6 @@ export async function getStrings (path: string): Promise<Strings> {
 			return Promise.resolve({});
 		}
 	});
-
-	return strings;
 }
 
 /**
@@ -41,6 +39,14 @@ export async function getStrings (path: string): Promise<Strings> {
  */
 export function addStringsToCache (path: string, strings: Strings) {
 	stringsCache.set(path, strings);
+}
+
+/**
+ * Removes the strings with the given path from the cache.
+ * @param path
+ */
+export function removeStringsFromCache (path: string) {
+	stringsCache.delete(path);
 }
 
 /**

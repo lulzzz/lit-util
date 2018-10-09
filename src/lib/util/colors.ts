@@ -45,5 +45,5 @@ export function contrastColor (color: string | RGB): string {
 	}
 
 	const yiq = ((color.r * 299) + (color.g * 587) + (color.b * 114)) / 1000;
-	return (yiq >= 140) ? "#000000" : "#ffffff";
+	return (yiq >= 140) ? "#000000" : "#FFFFFF";
 }

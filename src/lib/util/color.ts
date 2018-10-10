@@ -1,3 +1,5 @@
+import { HEX_PATTERN } from "../constant/pattern";
+
 export type RGB = {r: number, g: number, b: number, a?: number};
 
 /**
@@ -5,7 +7,7 @@ export type RGB = {r: number, g: number, b: number, a?: number};
  * @param hex
  */
 export function hexToRGB (hex: string): RGB | null {
-	const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?$/i.exec(hex);
+	const result = HEX_PATTERN.exec(hex);
 	if (result == null) return null;
 
 	const [, rHex, gHex, bHex, alpha] = result;
@@ -30,7 +32,7 @@ export function hexToRGB (hex: string): RGB | null {
  * @param hex
  */
 export function isHex (hex: string): boolean {
-	return /^#?(([a-f\d]{6})([a-f\d]{2})?|[a-f\d]{3})$/i.test(hex);
+	return HEX_PATTERN.test(hex);
 }
 
 /**

@@ -1,4 +1,5 @@
 export * from "./keycode";
+export * from "./pattern";
 
 /**
  * An empty src to use when no media src can be provided
@@ -17,3 +18,4 @@ export const IS_MOBILE = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberr
  * @type {boolean}
  */
 export const IS_IOS_DEVICE = /iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
+

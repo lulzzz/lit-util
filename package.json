@@ -49,12 +49,12 @@
 		"lit-html": "^0.12.0"
 	},
 	"devDependencies": {
-		"@appnest/web-config": "0.0.35",
+		"@appnest/web-config": "0.0.36",
 		"@types/chai": "^4.1.6",
 		"@types/mocha": "^5.2.5",
 		"chai": "^4.2.0",
 		"chromedriver": "^2.42.0",
-		"copy-webpack-plugin": "^4.5.2",
+		"copy-webpack-plugin": "^4.5.3",
 		"karma": "^3.0.0",
 		"karma-babel-preprocessor": "^7.0.0",
 		"karma-chai": "^0.1.0",

@@ -1,4 +1,3 @@
-export * from "./translate";
 export * from "../constant/keycode";
 export * from "./helper";
 export * from "./random";

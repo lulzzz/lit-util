@@ -1,5 +1,5 @@
 export * from "./translate";
-export * from "./keycode";
+export * from "../constant/keycode";
 export * from "./helper";
 export * from "./random";
 export * from "./dom";

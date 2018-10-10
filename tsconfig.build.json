@@ -2,7 +2,9 @@
 	"extends": "./node_modules/@appnest/web-config/tsconfig.json",
 	"compilerOptions": {
 		"outDir": "dist",
-		"declaration": true
+		"declaration": true,
+		"target": "es2017",
+		"importHelpers": true
 	},
 	"include": [
 		"src/lib/**/*"

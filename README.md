@@ -98,6 +98,9 @@ export class HelloComponent extends LitElement {
 
 Coming soon..
 
+## 🌲 Constant
+
+Coming soon..
 
 
 ## 🎉 License

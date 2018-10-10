@@ -5,5 +5,6 @@ export const URL_PATTERN = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?
 
 /**
  * Pattern for validating a hex.
+ * https://mathiasbynens.be/demo/url-regex
  */
 export const HEX_PATTERN = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?$/i; // /^#?(([a-f\d]{6})([a-f\d]{2})?|[a-f\d]{3})$/i;
